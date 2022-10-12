@@ -1,0 +1,44 @@
+body{
+background-image:url('/static/background.jpg');
+background-size:cover;
+justify-content:center;
+align-items:center;
+}
+.py-5 h1{
+color:#4d994d;
+}
+.back{
+position:absolute;
+top:5%;
+left:90%;
+}
+.pre_img{
+position:absolute;
+text-align:center;
+border-radius:10%;
+top:40%;
+left:50%;
+transform:translate(-50%,-50%);
+}
+.pre_img h2{
+color:rgb(191,191,191);
+margin-left:40px;
+margin-top:30px;
+}
+.pre_img p{
+text-align:center;
+justify-content:center;
+color:white;
+}
+select
+{
+outline:none;
+box-shadow:none;
+background:#5c664;
+background-color:#cbe7ff;
+height:2.6em;
+width:250px;
+border-radius:5%;
+border:2px solid #2196f3;
+cursor:pointer;
+}

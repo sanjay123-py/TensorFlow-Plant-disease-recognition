@@ -1,10 +1,35 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'base.html' %}
 
-</body>
-</html>
+{% block content %}
+<div align="center">
+    <form method="post" action="{{url_for('get_img')}}" enctype="multipart/form-data">
+        <input type="file" name="image" class="form-control text-secondary" autocomplete="off"><br><br>
+
+        <p>Select the type of plant</p><br>
+        <select class="btn-container" style="text-align:center;" name="sel_mod" required>
+            <option value="None">Choose the type of plant</option>
+            <option value="Tomato_model">Tomato Model</option>
+            <option value="Apple_model">Apple Model</option>
+            <option value="Cherry_model">Cherry Model</option>
+            <option value="Grape_model">Grape Model</option>
+            <option value="Peach_model">Peach Model</option>
+            <option value="Potato_model">Potato Model</option>
+            <option value="Corn_model">Corn Model</option>
+            <option value="StrawBerry_model">StrawBerry Model</option>
+        </select><br><br>
+        <input type="submit" value="Submit" class="btn btn-outline-success">
+        <br>
+    </form>
+
+    <br>
+    <p style="line-height:180%;">
+    {% with messages = get_flashed_messages() %}
+    {% for message in messages %}
+              {{message}}
+     {% endfor %}
+     {% endwith %}
+    </p>
+    <h2>{{label}}</h2>
+</div>
+{% endblock %}
+
