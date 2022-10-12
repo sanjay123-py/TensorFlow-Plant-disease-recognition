@@ -21,7 +21,7 @@ Funtion to check whether the extension of the uploaded file is in ALLOWED_EXTENS
 '''
 
 def check_file_name(filename:str):
-    if(filename.split(".")[1].lower() in ALLOWED_EXTENSION):
+    if(filename.split(".")[-1].lower() in ALLOWED_EXTENSION):
         return True
     return False
 
