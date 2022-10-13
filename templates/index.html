@@ -22,13 +22,12 @@
     </form>
 
     <br>
-    <p style="line-height:180%;">
-    {% with messages = get_flashed_messages() %}
-    {% for message in messages %}
-              {{message}}
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% for category,message in messages %}
+    <p style="line-height:180%;" class="{{category}}"> {{message}}</p>
      {% endfor %}
      {% endwith %}
-    </p>
+
     <h2>{{label}}</h2>
 </div>
 {% endblock %}
