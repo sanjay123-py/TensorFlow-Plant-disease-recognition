@@ -7,7 +7,7 @@ class model:
         self.filename=filename
         self.selected_model=selected_model
 
-        self.labels={"Apple_model" : ['Apple_Scab disease',
+        self.labels={"Apple_model" : ['Apple Scab disease',
                               'Apple Black_rot',
                               'Apple edar_apple_rust',
                               'Apple healthy'],
