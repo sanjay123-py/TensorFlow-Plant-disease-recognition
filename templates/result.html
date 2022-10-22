@@ -2,18 +2,26 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Result</title>
+    <title>FarmAI</title>
  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
     <link href="{{ url_for('static',filename='style1.css') }}" rel="stylesheet">
 </head>
 <body>
 <div class="pre_img">
       <img src="/{{path}}" width="300" height="280">
-    <h2>Plant is affected by: <span style="color:green;">{{prediction}}</span></h2>
-    <p>lorem ipsummfmf noqwfm oqfmifj23 o3jf2okpqie nwwjf eqnoirg hewfwj eufh enf eifw ef iweuf b ehfw oejbf wi ekfnwe kfnewfi oe ifhjwoie wief hiw onoeihfn fieu eifhiw oeqoiebfhi orugh jf</p>
+    <h2>Plant is affected by: <span style="{{color}}">{{prediction}}</span></h2>
+
+    {% for description in scrap %}
+    <ul>
+        <li style="color:white;" class="lead">{{description}}</li>
+    </ul>
+
+
+    {% endfor %}
+
 </div>
 <form action="/" method="post">
-    <button type="submit" class="btn btn-outline-light back">back</button>
+    <button type="submit" class="btn btn-outline-light back" style="position:fixed;">back</button>
 </form>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
 </body>

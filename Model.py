@@ -12,7 +12,6 @@ class model:
                               'Apple edar_apple_rust',
                               'Apple healthy'],
         "Corn_model" : ['Corn_(maize) Cercospora_leaf_spot Gray_leaf_spot',
-                             'Corn_(maize) Common_rust_',
                              'Corn_(maize) Northern_Leaf_Blight',
                              'Corn_(maize) healthy'],
         "Peach_model" : ['Peach Bacterial_spot',

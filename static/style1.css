@@ -3,6 +3,8 @@ background-image:url('/static/background.jpg');
 background-size:cover;
 justify-content:center;
 align-items:center;
+background-repeat:repeat;
+height:100vh;
 }
 .py-5 h1{
 color:#4d994d;
@@ -13,10 +15,12 @@ top:5%;
 left:90%;
 }
 .pre_img{
+width:1150px;
+height:100vh;
 position:absolute;
 text-align:center;
 border-radius:10%;
-top:40%;
+top:60%;
 left:50%;
 transform:translate(-50%,-50%);
 }
@@ -26,10 +30,13 @@ margin-left:40px;
 margin-top:30px;
 }
 .pre_img p{
+
+position:fixed;
 text-align:center;
 justify-content:center;
 color:white;
 }
+
 select
 {
 outline:none;

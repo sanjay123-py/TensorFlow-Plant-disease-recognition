@@ -2,7 +2,8 @@ import os
 import sys
 from flask import Flask,render_template,url_for, request,flash,redirect
 from Model import model
-
+from scrap import ScrapExplanation
+from Firebase.storage import Cloudapi
 #Create an app
 app=Flask(__name__)
 app.secret_key="sanjay"
@@ -60,7 +61,14 @@ def predict(image_name,selected_model):
         image_path = os.path.join("static/uploads/",image_name)
         model1=model(image_path,selected_model)
         prediction=model1.predict_and_visualize()
-        return render_template("result.html",path=image_path,prediction=prediction)
+        color='color:rgb(255, 90, 0);'
+        if("healthy" in prediction.lower()):
+            description=ScrapExplanation()
+            color='color:green;'
+            return render_template("result.html",path=image_path,prediction=prediction,scrap=description.content,color=color)
+        else:
+            description=ScrapExplanation(prediction)
+            return render_template("result.html", path=image_path, prediction=prediction, scrap=description.content, color=color)
     except:
         flash("Someting error happend",category="error")
         return redirect(url_for("home"))
