@@ -50,25 +50,42 @@ def get_img():
             flash("No Model is selected.",category="error")
             return redirect(url_for("home"))
         else:
-            plant_image.save(os.path.join("static/uploads/",plant_image.filename))
-            return redirect(url_for("predict",image_name=plant_image.filename,selected_model=selected_model))
 
+            # plant_image.save(os.path.join("static/uploads/",plant_image.filename))
+
+            store_image=Cloudapi(plant_image,plant_image.filename)
+            url=store_image.url
+            url=url.replace('/','`')
+
+            return redirect(url_for("predict",image_url=url[8:],selected_model=selected_model))
 # After redirecting from the get_img we predict the disease and that is done by model class from Model.py
 
-@app.route('/<image_name>/<selected_model>',methods=['POST','GET'])
-def predict(image_name,selected_model):
+@app.route('/<image_url>/<selected_model>',methods=['POST','GET'])
+def predict(image_url:str,selected_model):
+
     try:
-        image_path = os.path.join("static/uploads/",image_name)
-        model1=model(image_path,selected_model)
+    # image_path = os.path.join("static/uploads/",image_name)
+        image_url=image_url.replace('`',"/")
+        model1=model("https://"+image_url,selected_model)
         prediction=model1.predict_and_visualize()
-        color='color:rgb(255, 90, 0);'
+        color='color:rgb(255, 50, 0);'
         if("healthy" in prediction.lower()):
             description=ScrapExplanation()
             color='color:green;'
-            return render_template("result.html",path=image_path,prediction=prediction,scrap=description.content,color=color)
+            return render_template("result.html",path="https://"+image_url,
+                                   prediction=prediction,
+                                   scrap=description.content,
+                                   color=color)
         else:
             description=ScrapExplanation(prediction)
-            return render_template("result.html", path=image_path, prediction=prediction, scrap=description.content, color=color)
+            if(len(description.content)==0):
+                return render_template("result.html", path="https://" + image_url,
+                                       prediction=prediction,
+                                       scrap=["Google scrapping limit exceeds...Sorry!!"], color=color)
+            return render_template("result.html", path="https://"+image_url,
+                                   prediction=prediction,
+                                   scrap=description.content,
+                                   color=color)
     except:
         flash("Someting error happend",category="error")
         return redirect(url_for("home"))

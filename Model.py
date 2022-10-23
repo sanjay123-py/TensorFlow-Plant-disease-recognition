@@ -2,42 +2,44 @@ import keras.models
 import tensorflow as tf
 import os
 import numpy as np
+import requests
 class model:
     def __init__(self,filename,selected_model):
         self.filename=filename
         self.selected_model=selected_model
 
-        self.labels={"Apple_model" : ['Apple Scab disease',
-                              'Apple Black_rot',
-                              'Apple edar_apple_rust',
+        self.labels={
+        "Apple_model" : ['Apple Scab disease',
+                              'Apple Blackrot',
+                              'Apple Edar rust',
                               'Apple healthy'],
-        "Corn_model" : ['Corn_(maize) Cercospora_leaf_spot Gray_leaf_spot',
-                             'Corn_(maize) Northern_Leaf_Blight',
-                             'Corn_(maize) healthy'],
-        "Peach_model" : ['Peach Bacterial_spot',
+        "Corn_model" : ['Corn_(maize) Cercospora leafspot Gray leaf spot',
+                             'Corn (maize) Northern Leaf Blight',
+                             'Corn (maize) healthy'],
+        "Peach_model" : ['Peach Bacterial spot',
                               'Peach healthy'],
         "Tomato_model" : ['Tomato Bacterial_spot',
-                               'Tomato Early_blight',
-                               'Tomato Late_blight',
-                               'Tomat Leaf_Mold',
-                               'Tomato Septoria_leaf_spot',
-                               'Tomato Spider_mites Two-spotted_spider_mite',
-                               'Tomato Target_Spot',
-                               'Tomato Tomato_Yellow_Leaf_Curl_Virus',
-                               'Tomato Tomato_mosaic_virus',
+                               'Tomato Early blight',
+                               'Tomato Late blight',
+                               'Tomat Leaf Mold',
+                               'Tomato Septoria leaf spot',
+                               'Tomato Spider mites Two spotted spider mite',
+                               'Tomato Target Spot',
+                               'Tomato Tomato Yellow Leaf Curl Virus',
+                               'Tomato Tomato mosaic virus',
                                'Tomato healthy'],
         "Potato_model" :['Potato Early_blight',
                                'Potato Late_blight',
                                'Potato healthy'],
         "Grape_model" : ['Grape Black_rot',
                               'Grape Esca_(Black_Measles)',
-                              'Grape Leaf_blight_(Isariopsis_Leaf_Spot)',
+                              'Grape Leaf blight (Isariopsis_Leaf_Spot)',
                               'Grape healthy'],
 
-        "StrawBerry_model" : ['Strawberry Leaf_scorch',
+        "StrawBerry_model" : ['Strawberry Leaf scorch',
                                    'Strawberry healthy'],
-        "Cherry_model" : ['Cherry_(including_sour) Powdery_mildew',
-                               'Cherry_(including_sour) healthy']
+        "Cherry_model" : ['Cherry (including_sour) Powdery mildew',
+                               'Cherry (including_sour) healthy']
         }
 
     """
@@ -48,9 +50,11 @@ class model:
     """
 
     def load_and_prep_data(self,path):
-        img = tf.io.read_file(path)
+        # the below line of code is applicable only if the file is stored in out project directory
+        # img = tf.io.read_file(path)
         # decode the image into tensor
-        tensor = tf.io.decode_image(img, channels=3)
+
+        tensor = tf.io.decode_image(requests.get(path).content, channels=3)
 
         image = tf.image.resize(tensor, [256, 256])
         # normalize the image

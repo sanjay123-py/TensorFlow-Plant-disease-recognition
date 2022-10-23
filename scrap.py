@@ -1,6 +1,6 @@
 from bs4 import BeautifulSoup
 import requests
-
+import time
 class ScrapExplanation:
     def __init__(self, *args):
         if(len(args)==1):
@@ -8,6 +8,7 @@ class ScrapExplanation:
             search_query="https://www.google.com/search?q="
             self.url=search_query+"+".join(self.disease.split(' '))
             self.request_content=requests.get(self.url)
+            time.sleep(0.5)
             self.bscontent=BeautifulSoup(self.request_content.text,"html.parser")
             self.div1=self.bscontent.find_all(['div'],class_='kCrYT')
             self.content=[]
@@ -20,5 +21,6 @@ class ScrapExplanation:
                     pass
         else:
             self.content=["Your plant is healthy no worries ;)"]
+
     # def __repr__(self):
     #     return "\n".join(self.content)
