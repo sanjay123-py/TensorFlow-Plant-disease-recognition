@@ -1,7 +1,9 @@
-flask
-pyrebase
-keras
+flask~=2.2.2
+pyrebase~=3.0.27
+keras~=2.9.0
 tensorflow~=2.9.1
-numpy
+numpy~=1.22.3
 requests
-bs4
+bs4~=0.0.1
+beautifulsoup4~=4.11.1
+gunicorn
