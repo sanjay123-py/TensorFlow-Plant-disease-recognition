@@ -90,4 +90,4 @@ def predict(image_url:str,selected_model):
         flash("Someting error happend",category="error")
         return redirect(url_for("home"))
 if __name__ == '__main__':
-    app.run(port=4321)
+    app.run(debug=True)
