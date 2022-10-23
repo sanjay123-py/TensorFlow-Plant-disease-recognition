@@ -1,4 +1,5 @@
 import keras.models
+import keras
 import tensorflow as tf
 import os
 import numpy as np
@@ -53,7 +54,6 @@ class model:
         # the below line of code is applicable only if the file is stored in out project directory
         # img = tf.io.read_file(path)
         # decode the image into tensor
-
         tensor = tf.io.decode_image(requests.get(path).content, channels=3)
 
         image = tf.image.resize(tensor, [256, 256])
