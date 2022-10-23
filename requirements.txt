@@ -1,7 +1,7 @@
 flask
 pyrebase
 keras
-tensorflow
+tensorflow~=2.9.1
 numpy
 requests
 bs4
