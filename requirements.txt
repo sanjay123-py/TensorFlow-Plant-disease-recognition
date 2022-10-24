@@ -1,9 +1,9 @@
 flask~=2.2.2
-pyrebase
-keras~=2.9.0
-tensorflow~=2.9.1
-numpy~=1.22.3
+pyrebase4
+keras==2.9.0
+tensorflow==2.9.1
+numpy
 requests>=2.21.0
 bs4~=0.0.1
-beautifulsoup4~=4.11.1
 gunicorn
+jwt
