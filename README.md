@@ -1,6 +1,7 @@
 # Plant-Disease-Recognition-TensorFlow
-This project uses DeepLearning using TensorFlow to recognize disease patterns on various plants
+This project uses DeepLearning using TensorFlow to recognize disease patterns on various plants<br>
 
+<h3>Click here:</h3><a href="https://farmai-trial.herokuapp.com/">Deployment Link</a>
 <h2>Technology Stack</h2>
 
 <h4>Languages used:</h4>
